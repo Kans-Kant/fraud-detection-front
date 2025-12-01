@@ -35,14 +35,6 @@ jobs:
       - name: Build Angular App
         run: npm run build --prod
 
-      # 6️⃣ Vérifier que index.html existe dans le dossier compilé
-      - name: Verify build output
-        run: |
-          if [ ! -f "dist/fraud-detection-front/index.html" ]; then
-            echo "Error: index.html not found in dist/fraud-detection-front"
-            exit 1
-          fi
-
       # 7️⃣ Déploiement vers Azure SWA (skip build côté Azure)
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -50,7 +42,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "dist/fraud-detection-front" # dossier compilé contenant index.html
+          app_location: "/" # dossier compilé contenant index.html
           api_location: ""                             # pas d'API
           output_location: ""                          # déploiement direct
 
