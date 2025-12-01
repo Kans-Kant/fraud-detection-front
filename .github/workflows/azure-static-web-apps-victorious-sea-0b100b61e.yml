@@ -14,31 +14,37 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
+      # 1️⃣ Checkout du repo
       - uses: actions/checkout@v3
 
-      # Installer Node 22
+      # 2️⃣ Installer Node 22.16.0
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '22.16.0'
 
-      # Installer les dépendances Angular
+      # 3️⃣ Vérifier la version Node
+      - name: Check Node version
+        run: node -v
+
+      # 4️⃣ Installer les dépendances Angular
       - name: Install dependencies
         run: npm install
 
-      # Build Angular localement (Node 22)
+      # 5️⃣ Build Angular localement (Node 22)
       - name: Build Angular App
         run: npm run build --prod
 
-      # Déploiement vers Azure SWA en "skip build" (Oryx n’intervient pas)
+      # 6️⃣ Déploiement vers Azure SWA (skip build côté Azure)
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/" # dossier Angular compilé
+          app_location: "dist/fraud-detection-front" # dossier compilé contenant index.html à la racine
           api_location: ""                             # pas d'API
-          output_location: ""                          # vide, on déploie directement
+          output_location: ""                          # déploiement direct
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -46,7 +52,6 @@ jobs:
     name: Close Pull Request Job
     steps:
       - name: Close Pull Request
-        id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
