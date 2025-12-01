@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Transactions</li>
+        </ol>
+    </nav>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-default border-success" (click)="exportToCsv()">
+            <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9 17H15M9 13H15M9 9H10M13 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.0799 5 6.2V17.8C5 18.9201 5 19.4802 5.21799 19.908C5.40973 20.2843 5.71569 20.5903 6.09202 20.782C6.51984 21 7.0799 21 8.2 21H15.8C16.9201 21 17.4802 21 17.908 20.782C18.2843 20.5903 18.5903 20.2843 18.782 19.908C19 19.4802 19 18.9201 19 17.8V9M13 3L19 9M13 3V7.4C13 7.96005 13 8.24008 13.109 8.45399C13.2049 8.64215 13.3578 8.79513 13.546 8.89101C13.7599 9 14.0399 9 14.6 9H19"
+                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="mx-2">Export csv</span>
+        </button>
+    </div>
+    <table class="table table-striped table-bordered mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Amount(€)</th>
+                <th scope="col">Type</th>
+                <th scope="col">Time</th>
+                <th scope="col">Merchant</th>
+                <th scope="col">Card</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <th scope="row">
+                    <input type="checkbox" name="id-{{transaction?.id}}" id={{transaction?.id}}>
+                </th>
+                <td>{{transaction?.amount}}</td>
+                <td>{{transaction?.transactionType}}</td>
+                <td>{{transaction?.transactionTime | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td class="text-center">{{transaction?.merchant?.name || "-"}}</td>
+                <td class="text-center">{{transaction?.card?.id || "-"}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="showTransactionDetails(transaction?.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-eye" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                            <path
+                                d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                        </svg>
+                    </button>
+                    <button type="button" class="btn btn-danger mx-2" (click)="deleteItem(transaction?.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                            class="bi bi-trash" viewBox="0 0 16 16">
+                            <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                            <path
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end">
+            <li class="page-item {{page === 0 ? 'disabled' : ''}}">
+                <button class="page-link" tabindex="-1" (click)="onPreviousPage()" [disabled]="page === 0">Previous</button>
+            </li>
+            <li class="page-item"><span class="page-link">Page {{ page + 1 }} / {{ totalPage }}</span></li>
+            <li class="page-item">
+                <button class="page-link" (click)="onNextPage()" [disabled]="page === totalPage">Next</button>
+            </li>
+        </ul>
+    </nav>
+</div>

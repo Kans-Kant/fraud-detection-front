@@ -1,0 +1,39 @@
+.bg-green-left {
+    background: linear-gradient(140deg, #86B0AA 0%, #00948D 99.06%);
+}
+
+.card-profile {
+    border-radius: 24px;
+    border: 1px solid #E5E5E5;
+}
+
+.card-profile-icon {
+    border-radius: 24px;
+    background: #E6EFEF;
+    text-align: center;
+    display: flex;
+    padding: 18px 24px;
+    align-items: center;
+    gap: 10px;
+}
+
+.or-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000;
+  }
+
+  .or-text::before,
+  .or-text::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid #000;
+    margin: 0 15px 0 15px;
+  }
+
+  .btn-login-primary{
+    min-width: 200px;
+    background-color: var(--primary-color);
+    color: #FFF;
+  }

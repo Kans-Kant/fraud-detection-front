@@ -1,0 +1,71 @@
+<h2 class="title">Tableau de bord — Détection de fraude</h2>
+
+<div class="grid">
+    <mat-card class="card stat">
+        <mat-icon>payment</mat-icon>
+        <div>
+            <h3>{{ totalTransactions || 0 }}</h3>
+            <p>Transactions totales</p>
+        </div>
+    </mat-card>
+
+    <mat-card class="card stat danger">
+        <mat-icon>warning</mat-icon>
+        <div>
+            <h3>{{ fraudCount || 0 }}</h3>
+            <p>Fraudes détectées</p>
+        </div>
+    </mat-card>
+
+    <mat-card class="card stat">
+        <mat-icon>person</mat-icon>
+        <div>
+            <h3>{{ clientCount || 0 }}</h3>
+            <p>Clients</p>
+        </div>
+    </mat-card>
+
+    <mat-card class="card stat">
+        <mat-icon>payment</mat-icon>
+        <div>
+            <h3>{{ cardCount || 0 }}</h3>
+            <p>Cards</p>
+        </div>
+    </mat-card>
+
+    <mat-card class="card stat">
+        <mat-icon>home</mat-icon>
+        <div>
+            <h3>{{ bankCount || 0 }}</h3>
+            <p>Banks</p>
+        </div>
+    </mat-card>
+
+</div>
+
+<hr />
+
+<h3>Statistiques</h3>
+
+<div class="row">
+
+    <!-- LINE CHART -->
+    <div class="col-md-6">
+        <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="{ responsive: true }"
+            chartType="line">
+        </canvas>
+    </div>
+
+    <div class="col-md-6">
+        <!-- DOUGHNUT CHART -->
+        <canvas baseChart [datasets]="doughnutChartData" [labels]="doughnutChartLabels" [options]="{ responsive: true }"
+            chartType="doughnut">
+        </canvas>
+    </div>
+
+    <div class="col-md-6">
+        <canvas baseChart [datasets]="pieChartData" [labels]="pieChartLabels" [options]="{ responsive: true }"
+            chartType="pie">
+        </canvas>
+    </div>
+</div>

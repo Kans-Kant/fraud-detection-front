@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ data.title || 'Détails' }}</h2>
+
+<mat-dialog-content class="content">
+
+    <!-- LOADING -->
+    <div *ngIf="loading" class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Chargement...</p>
+    </div>
+
+    <!-- DETAILS -->
+    <div *ngIf="!loading" class="details-container">
+        <div class="detail-row" *ngFor="let item of entries">
+            <span class="key">{{ item.key }}</span>
+            <span class="value">{{ item.value | uf }}</span>
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-stroked-button (click)="dialogRef.close()" class="close-btn p-2 px-4">Fermer</button>
+</mat-dialog-actions>

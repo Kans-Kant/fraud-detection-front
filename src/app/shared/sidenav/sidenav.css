@@ -1,0 +1,23 @@
+.sidenav{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+ul {
+    list-style-type: none;
+    display: block;
+}
+
+.nav-item .nav-link {
+    text-align: left;
+    text-transform: capitalize;
+    color: rgb(21, 21, 21);
+    border-bottom: solid 1px rgb(209, 209, 209);
+}
+
+.nav-item .active {
+    color: #0e76a8;
+    font-weight: 600px;
+}
+
+.nav-item:hover .nav-link {
+    color: #0e76a8;
+}

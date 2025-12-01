@@ -1,0 +1,24 @@
+<header class="dashboard-header fixed-top">
+    <div class="header-left">
+        <div class="logo">FD</div>
+        <h1 class="title">Fraud Detection Dashboard</h1>
+    </div>
+
+    <div class="header-right">
+        <div class="icon-btn">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+
+        <div class="user-profile">
+            <button mat-button [matMenuTriggerFor]="menu">
+                <img src="/images/40.jfif" alt="User" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" />
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onSetting()">Paramètres</button>
+                <button mat-menu-item (click)="logOut()">Déconnexion</button>
+            </mat-menu>
+            <span class="user-name">{{username || "Admin"}}</span>
+        </div>
+    </div>
+</header>

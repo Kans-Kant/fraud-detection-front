@@ -1,0 +1,265 @@
+:root {
+    --primary-color: #5F9EA0;
+    --secondary-color: #C1E1C1;
+    --primary-dark-color: #0071c2;
+    --gray-color: #EFEBEB;
+    --gray2-color: #acacac;
+    --font-family-sans-serif: 'GT Standard Thin', 'Source Sans Pro', 'Open Sans', Helvetica, Arial, sans-serif;
+    --font-family-monospace: 'GT Standard Thin', 'Source Sans Pro', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+        monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'GT Standard Thin', Helvetica, Arial, serif !important;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333e48;
+    text-align: left;
+    background-color: #f7f7f7;
+}
+
+h1 h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Romie', serif;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.bg-primary-light {
+    background-color: #edf2f2;
+}
+
+.bg-secondary {
+    background-color: var(--secondary-color);
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-gray-1 {
+    background-color: rgb(250, 253, 255);
+}
+
+.bg-gray-2 {
+    background-color: rgb(218 217 217);
+}
+
+.h-px {
+    height: 1px;
+}
+
+.color-white {
+    color: white;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-13 {
+    font-size: 13px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-16 {
+    font-size: 16px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+.font-size-26 {
+    font-size: 26px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #818181;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #dddddd;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.max-h-400 {
+    max-height: 400px;
+}
+
+.h-200 {
+    height: 200px;
+}
+
+.h-60 {
+    height: 60px;
+}
+
+.h-80 {
+    min-height: 80px;
+}
+
+.min-h-400 {
+    min-width: 400px;
+}
+
+.w-44 {
+    width: 44%;
+}
+
+.w-49 {
+    width: 49%;
+}
+
+.btn-seconary {
+    background-color: var(--secondary-color) !important;
+    color: white;
+}
+
+.min-w-400 {
+    min-width: 400px;
+}
+
+.min-w-240 {
+    min-width: 240px;
+}
+
+.bg-white {
+    background-color: #FFF !important;
+}
+
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.card {
+    box-shadow: 0 3px 3px rgba(25, 32, 36, 0.16), 0 -1px 2px rgba(25, 32, 36, 0.04) !important;
+    z-index: 1;
+    border-radius: 10px;
+    border: none !important;
+}
+
+.card-header {
+    background-color: rgb(223 228 233) !important;
+}
+
+.card-footer {
+    background-color: rgb(223 228 233) !important;
+}
+
+.headerContainer {
+    width: 100%;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.headerList {
+    gap: 20px;
+}
+
+.headerListItem {
+    align-items: center;
+    gap: 15px;
+}
+
+.header .nav-link {
+    color: black;
+}
+
+.medisync-logo {
+    width: 144px;
+    max-height: 50px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    color: #FFF;
+    border: none !important;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #eee;
+    border-top: 4px solid #3f51b5;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+td {
+    font-size: 13px;
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #4caf50, #2e7d32) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #e53935, #b71c1c) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    font-size: 15px !important;
+}

@@ -1,0 +1,25 @@
+<div class="overlay" *ngIf="loadingService.isLoading$ | async">
+    <div class="spinner"></div>
+</div>
+<app-header></app-header>
+<div class="container-fluid bg-light" style="min-height:90vh;">
+    <div class="row mx-0 px-0">
+        <div class="col-lg-2 py-3">
+            <app-sidenav></app-sidenav>
+            <div class="card p-3 mt-3 bg-grey">
+                <div class="d-flex">
+                    <mat-icon>help</mat-icon>
+                    <h1 class="font-size-20 mx-2"> Need help ?</h1>
+                </div>
+                <p class="text-center">Call us on :</p>
+                <div class="d-flex">
+                    <mat-icon>phone</mat-icon>
+                    <h1 class="font-size-16 text-success">+33 600 000 000 </h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 py-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

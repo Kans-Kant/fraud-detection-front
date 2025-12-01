@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Settings</li>
+        </ol>
+    </nav>
+    <form [formGroup]="userForm" (ngSubmit)="onUpdateUser()">
+        <div class="form-group mt-5">
+            <label for="account-fn">Fullname *</label>
+            <input formControlName="fullName" class="form-control" type="text" id="account-fn">
+        </div>
+        <div class="form-group mt-3">
+            <label for="account-email">E-mail *</label>
+            <input formControlName="email" class="form-control" type="email" id="account-email">
+        </div>
+        <div class="form-group mt-3">
+            <label for="account-pass">New Password</label>
+            <input formControlName="password" class="form-control" placeholder="**************" type="password" id="account-pass">
+        </div>
+        <div class="form-group mt-3">
+            <label for="account-confirm-pass">Confirm Password</label>
+            <input formControlName="confirmPassword" placeholder="*************" class="form-control" type="password" id="account-confirm-pass">
+        </div>
+        <div class="col-12 mt-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <button class="btn btn-style-1 btn-primary mx-auto" type="submit" data-toast="" data-toast-position="topRight"
+                    data-toast-type="success" data-toast-icon="fe-icon-check-circle" data-toast-title="Success!"
+                    data-toast-message="Your profile updated successfuly.">Update Profile</button>
+            </div>
+        </div>
+    </form>
+</div>

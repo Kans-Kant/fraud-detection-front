@@ -1,0 +1,13 @@
+.cancel{
+    background-color: gray;
+    border: none;
+    border-radius: 7px;
+    color:white;   
+}
+
+.confirm{
+    background-color: green;
+    border: none;
+    border-radius: 7px;
+    color:white;   
+}

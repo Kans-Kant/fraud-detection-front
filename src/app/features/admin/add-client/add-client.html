@@ -1,0 +1,83 @@
+<div class="register-form">
+    <a routerLink="../" class="text-black">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg>
+    </a>
+    <div class="col-md-8 mx-auto">
+        <form [formGroup]="clientForm" (ngSubmit)="onAddClient()">
+            <div class="row">
+                <div class="form-group mt-3 col-md-6">
+                    <label for="firstname" class="mb-3 b">firstname *</label>
+                    <input type="text" class="form-control" placeholder="firstname" name="firstName"
+                        formControlName="firstName" />
+                    <small *ngIf="clientForm.controls['firstName'].invalid && clientForm.controls['firstName'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+                <div class="form-group mt-3 col-md-6">
+                    <label for="lastName" class="mb-3 b">Lastname *</label>
+                    <input type="text" class="form-control" placeholder="Lastname" name="lastName"
+                        formControlName="lastName" />
+                    <small *ngIf="clientForm.controls['lastName'].invalid && clientForm.controls['lastName'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group mt-3 col-md-6">
+                    <label for="gender" class="mb-3 b">Gender *</label>
+                    <input type="text" class="form-control" placeholder="Gender" name="gender"
+                        formControlName="gender" />
+                    <small *ngIf="clientForm.controls['gender'].invalid && clientForm.controls['gender'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+                <div class="form-group mt-3 col-md-6">
+                    <label for="street" class="mb-3 b">Street *</label>
+                    <input type="text" class="form-control" placeholder="Street" name="street"
+                        formControlName="street" />
+                    <small *ngIf="clientForm.controls['street'].invalid && clientForm.controls['street'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group mt-3 col-md-6">
+                    <label for="city" class="mb-3 b">City *</label>
+                    <input type="text" class="form-control" placeholder="City" name="city" formControlName="city" />
+                    <small *ngIf="clientForm.controls['city'].invalid && clientForm.controls['city'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+                <div class="form-group mt-3 col-md-6">
+                    <label for="country" class="mb-3 b">Country *</label>
+                    <input type="text" class="form-control" placeholder="Country" name="country"
+                        formControlName="country" />
+                    <small *ngIf="clientForm.controls['country'].invalid && clientForm.controls['country'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group mt-3 col-md-6">
+                    <label for="latitude" class="mb-3 b">Latitude *</label>
+                    <input type="number" class="form-control" placeholder="Latitude" name="latitude"
+                        formControlName="latitude" />
+                    <small *ngIf="clientForm.controls['latitude'].invalid && clientForm.controls['latitude'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+                <div class="form-group mt-3 col-md-6">
+                    <label for="longitude" class="mb-3 b">Longitude *</label>
+                    <input type="number" class="form-control" placeholder="Longitude" name="longitude"
+                        formControlName="longitude" />
+                    <small *ngIf="clientForm.controls['longitude'].invalid && clientForm.controls['longitude'].touched"
+                        class="form-text text-danger ">Empty field!</small>
+                </div>
+            </div>
+
+            <div class="btn-login mt-5 d-flex" *ngIf="!submitted">
+                <button class="btn btn-client-primary p-2 mx-auto"> Add Client</button>
+            </div>
+        </form>
+    </div>
+</div>
