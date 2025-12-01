@@ -36,7 +36,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
           action: "upload"
-          app_location: "dist/proxy-website-frontend" # dossier Angular compilé
+          app_location: "/" # dossier Angular compilé
           api_location: ""                             # pas d'API
           output_location: ""                          # vide, on déploie directement
 
