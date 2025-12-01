@@ -30,11 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # === Build Angular ===
+      # === Build Angular localement ===
       - name: Build Angular App
-        run: npm run build --if-present
+        run: npm run build --prod
 
-      # === Déploiement vers Azure Static Web Apps ===
+      # === Déploiement vers Azure Static Web Apps (fichiers compilés) ===
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
