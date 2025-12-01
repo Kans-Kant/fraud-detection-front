@@ -20,13 +20,21 @@ jobs:
           submodules: true
           lfs: false
 
-      # === AJOUT : configuration Node.js 22 ===
+      # === Setup Node.js 22 ===
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '22'
-      # =======================================
 
+      # === Installer les dépendances ===
+      - name: Install dependencies
+        run: npm install
+
+      # === Build Angular ===
+      - name: Build Angular App
+        run: npm run build --if-present
+
+      # === Déploiement vers Azure Static Web Apps ===
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
