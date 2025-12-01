@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '22.16.0'
 
       # Installer les dépendances Angular
       - name: Install dependencies
