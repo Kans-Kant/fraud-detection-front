@@ -11,42 +11,34 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
 
-      # === Setup Node.js 22 ===
+      # Installer Node 22
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '22'
 
-      # === Installer les dépendances Angular ===
+      # Installer les dépendances Angular
       - name: Install dependencies
         run: npm install
 
-      # === Build Angular localement ===
+      # Build Angular localement (Node 22)
       - name: Build Angular App
         run: npm run build --prod
 
-      # === Déploiement vers Azure Static Web Apps (fichiers compilés) ===
-      - name: Build And Deploy
-        id: builddeploy
+      # Déploiement vers Azure SWA en "skip build" (Oryx n’intervient pas)
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Utilisé pour les intégrations GitHub (ex: commentaires PR)
           action: "upload"
-          ###### Repository/Build Configurations ######
-          app_location: "/" 
-          api_location: "" 
-          output_location: "dist/proxy-website-frontend"
-          ###### End of Repository/Build Configurations ######
+          app_location: "dist/proxy-website-frontend" # dossier Angular compilé
+          api_location: ""                             # pas d'API
+          output_location: ""                          # vide, on déploie directement
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
