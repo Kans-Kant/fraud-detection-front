@@ -17,33 +17,33 @@ jobs:
       # 1️⃣ Checkout du repo
       - uses: actions/checkout@v3
 
-      # 2️⃣ Installer Node 22.16.0
-      - name: Setup Node
+      # 2️⃣ Installer Node 22
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22.16.0'
+          node-version: '22'
 
-      # 3️⃣ Vérifier la version Node
-      - name: Check Node version
-        run: node -v
-
-      # 4️⃣ Installer les dépendances Angular
+      # 3️⃣ Installer les dépendances
       - name: Install dependencies
         run: npm install
 
-      # 5️⃣ Build Angular localement
+      # 4️⃣ Build Angular en production
       - name: Build Angular App
         run: npm run build --prod
 
-      # 7️⃣ Déploiement vers Azure SWA (skip build côté Azure)
+      # 5️⃣ Debug : vérifier que index.html existe
+      - name: Check build output
+        run: ls -R dist/fraud-detection-front
+
+      # 6️⃣ Déployer sur Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_VICTORIOUS_SEA_0B100B61E }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Pour les PR comment
           action: "upload"
-          app_location: "dist/fraud-detection-front" # dossier compilé contenant index.html
-          api_location: ""                             # pas d'API
+          app_location: "dist/fraud-detection-front" # dossier contenant index.html
+          api_location: ""                             # pas d’API
           output_location: ""                          # déploiement direct
 
   close_pull_request_job:
