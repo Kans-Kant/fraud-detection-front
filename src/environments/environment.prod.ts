@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: ''
+  apiUrl: 'https://fraud-detection-back-fxbpbdfecsekdqcy.francecentral-01.azurewebsites.net/api'
 };
